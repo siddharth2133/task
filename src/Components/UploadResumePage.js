@@ -45,14 +45,14 @@ const UploadResumePage = () => {
         <div className="bg-white rounded-lg p-5 mt-5">
           {" "}
           <div className="grid grid-cols-12">
-            <div className="col-span-2"></div>
-            <div className="flex items-center justify-center col-span-8">
-              <ul className="flex items-center w-full max-w-4xl">
+            <div className="col-span-2 lg:flex hidden"></div>
+            <div className="flex items-center justify-center lg:col-span-8 col-span-full">
+              <ul className="md:flex items-center w-full max-w-4xl">
                 {steps.map((step, index) => (
                   <li key={index} className="flex-1 relative">
                     <div className="flex items-center">
                       {step.isImage ? (
-                        <div className="w-8 h-8 flex justify-center items-center ml-12">
+                        <div className="w-8 h-8 flex justify-center items-center md:ml-12 ">
                           {/* Replace with an actual image */}
                           <img
                             src="/images/Peeky 9.png"
@@ -61,20 +61,20 @@ const UploadResumePage = () => {
                           />
                         </div>
                       ) : (
-                        <div className="w-8 h-8 flex justify-center items-center rounded-full  border border-gray-300 text-sm font-medium ml-12">
+                        <div className="w-8 h-8 flex justify-center items-center rounded-full  border border-gray-300 text-sm font-medium md:ml-12 ">
                           {index + 1}
                         </div>
                       )}
                       {index < steps.length - 1 && (
-                        <div className="flex-1 h-0.5 border-dotted border-t-2  absolute left-1/2 -right-[26%] -translate-y-1/2 border-[#A1AEBE]"></div>
+                        <div className="flex-1 h-0.5 lg:border-dotted lg:border-t-2  absolute left-1/2 -right-[26%] -translate-y-1/2 border-[#A1AEBE]"></div>
                       )}
                     </div>
-                    <div className="text-center mt-2 text-sm text-gray-700 -ml-2">{step.label}</div>
+                    <div className="text-center sm:mt-2 -mt-4 text-sm text-gray-700 -ml-2">{step.label}</div>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="col-span-2"></div>
+            <div className="col-span-2 lg:flex hidden"></div>
           </div>
 
 
@@ -117,7 +117,7 @@ const UploadResumePage = () => {
                     />
                     <div
                       key={idx}
-                      className="flex items-center justify-between border border-gray-300 rounded-md p-4 w-full"
+                      className="sm:flex items-center justify-between border border-gray-300 rounded-md p-4 w-full"
                     >
                       <div className="flex">
                         <img src="/images/PDF.png" className="h-12 w-12" />
@@ -146,7 +146,7 @@ const UploadResumePage = () => {
             </div>
           </div>
           {/* Next Button */}
-          <div className="mt-8 flex justify-end">
+          <div className="mt-8 flex md:justify-end justify-center">
             <button className="bg-red-600 text-white py-2 px-6 rounded-md hover:bg-red-700">
               Next
             </button>

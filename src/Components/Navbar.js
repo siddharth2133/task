@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
       
       <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-1 text-gray-700 text-sm">
+        <div className="sm:flex hidden items-center space-x-1 text-gray-700 text-sm">
           <span><img src="/images/image 414.png"/></span>
           <select
             className="focus:outline-none bg-transparent"
