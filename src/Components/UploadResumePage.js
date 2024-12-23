@@ -9,7 +9,7 @@ const UploadResumePage = () => {
 
   return (
     <div className=" bg-[#f8f8f8] font-sans pb-32">
-      <div className="max-w-6xl mx-auto p-8">
+      <div className="max-w-6xl mx-auto p-8 pl-4">
         {/* Header Section */}
         <div className=" bg-white rounded-lg p-5">
           <div className=" ">
@@ -37,7 +37,7 @@ const UploadResumePage = () => {
             href="#"
             className="text-[#0483F8] mt-3 inline-block hover:underline font-normal font-dmsans text-sm"
           >
-            Learn More About How It Works {">>>"}
+            Learn More About How It Works {">>>>>"}
           </a>{" "}
         </div>
 
@@ -46,7 +46,7 @@ const UploadResumePage = () => {
           {" "}
           <div className="grid grid-cols-12">
             <div className="col-span-2 lg:flex hidden"></div>
-            <div className="flex items-center justify-center lg:col-span-8 col-span-full">
+            <div className="flex items-center justify-center lg:col-span-8 col-span-full lg:-ml-11">
               <ul className="md:flex items-center w-full max-w-4xl">
                 {steps.map((step, index) => (
                   <li key={index} className="flex-1 relative">
@@ -85,6 +85,9 @@ const UploadResumePage = () => {
             </h2>
 
             <div className="border-dashed border-2 border-gray-400 rounded-md mt-4 py-5 px-10 text-center">
+              <div className="flex justify-center">
+              <img src="/gallery.png" alt="" className="p-4" />
+              </div>
               <p className="text-gray-500 text-sm font-dmsans">
                 Drop your resume here, or{" "}
                 <span className="text-blue-500 hover:underline cursor-pointer">
@@ -104,20 +107,20 @@ const UploadResumePage = () => {
               </h3>
               <div className="space-y-4 mt-4">
                 {[
-                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 22, 2023" },
-                  { name: "Tina Nguyen’s Resume", uploaded: "Jul 22, 2023" },
-                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 6, 2023" },
+                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 22, 2023", select:true, fileSize:'162 kb' },
+                  { name: "Tina Nguyen’s Resume", uploaded: "Jul 22, 2023", select:false, fileSize:'162 kb' },
+                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 6, 2023", select:false, fileSize:'162 kb' },
                 ].map((resume, idx) => (
                   <div className="flex">
                     <input
                       type="radio"
                       name="resume"
                       id={`resume-${idx}`}
-                      className="mr-4"
+                      className={`mr-4 ${resume.select?"border-red-500":"border-gray-300"}`}
                     />
                     <div
                       key={idx}
-                      className="sm:flex items-center justify-between border border-gray-300 rounded-md p-4 w-full"
+                      className={`sm:flex items-center justify-between border  rounded-md p-4 w-full ${resume.select?"border-red-500":"border-gray-300"}`}
                     >
                       <div className="flex">
                         <img src="/images/PDF.png" className="h-12 w-12" />
@@ -136,9 +139,18 @@ const UploadResumePage = () => {
 
 
 
-                      <button className="text-gray-500 hover:text-red-600 ml-4">
-                        Remove
+                      <div>
+                      <button className="w-5 flex justify-center m-1">
+                      <img
+                            src="/dots.png"
+                            alt="Step Icon"
+                            className="rounded-full"
+                          />
                       </button>
+                      <p  className="text-gray-500 text-[10px] font-dmsans font-normal">
+                        {resume.fileSize}
+                      </p>
+                      </div>
                     </div>
                   </div>
                 ))}

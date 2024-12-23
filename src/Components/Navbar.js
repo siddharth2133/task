@@ -2,14 +2,14 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-6 py-2 border-b border-gray-200 mx-auto max-w-7xl">
+    <nav className="flex items-center justify-between px-6 py-2 border-b border-gray-200 mx-12 max-w-7xl">
      
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-2 pl-4">
         <div className=" flex items-center justify-center">
           <img
             src="/images/1kibbi.png"
             alt="Logo"
-            className="w-40 h-12"
+            className="w-40 h-12 pl-4"
           />
         </div>
        
