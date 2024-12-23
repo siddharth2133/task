@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 const UploadResumePage = () => {
   const steps = [
-    { label: 'Create Your Profile', isImage: true },
-    { label: 'Confirm Your Profile', isImage: false },
-    { label: 'Drop Resume', isImage: false },
-    { label: 'Your Preferences (Optional)', isImage: false },
+    { label: "Create Your Profile", isImage: true },
+    { label: "Confirm Your Profile", isImage: false },
+    { label: "Drop Resume", isImage: false },
+    { label: "Your Preferences (Optional)", isImage: false },
   ];
+
+  const [isModalOpen, setIsModalOpen] = useState(null);
+  const handleRemove = (idx) => {
+    setIsModalOpen(idx);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className=" bg-[#f8f8f8] font-sans pb-32">
@@ -13,7 +22,7 @@ const UploadResumePage = () => {
         {/* Header Section */}
         <div className=" bg-white rounded-lg p-5">
           <div className=" ">
-            <h1 className="text-[#D9292F] font-bold text-2xl font-caveat">
+            <h1 className="text-[#D9292F] font-bold text-2xl font-architects-daughter">
               Oops! Seems like you have not had a profile...
             </h1>
             <p className="mt-4 text-gray-700 font-dmsans text-sm">
@@ -23,13 +32,23 @@ const UploadResumePage = () => {
             </p>
           </div>
           {/* Features List */}
-
-
           <ul className=" list-inside mt-4 text-gray-600 font-dmsans font-normal text-sm">
-            <li><span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">01.</span>Automatically fill out your profile details.</li>
-            <li className="mt-6"><span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">02.</span>Extract your skills, work experience, education, and more.</li>
+            <li>
+              <span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">
+                01.
+              </span>
+              Automatically fill out your profile details.
+            </li>
             <li className="mt-6">
-              <span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">03.</span>
+              <span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">
+                02.
+              </span>
+              Extract your skills, work experience, education, and more.
+            </li>
+            <li className="mt-6">
+              <span className="bg-[#F9D627] rounded-full p-1 mr-3 text-black font-caveat font-semibold">
+                03.
+              </span>
               Highlight your strengths to help you stand out to employers.
             </li>
           </ul>
@@ -69,15 +88,15 @@ const UploadResumePage = () => {
                         <div className="flex-1 h-0.5 lg:border-dotted lg:border-t-2  absolute left-1/2 -right-[26%] -translate-y-1/2 border-[#A1AEBE]"></div>
                       )}
                     </div>
-                    <div className="text-center sm:mt-2 -mt-4 text-sm text-gray-700 -ml-2">{step.label}</div>
+                    <div className="text-center sm:mt-2 -mt-4 text-sm text-gray-700 -ml-2">
+                      {step.label}
+                    </div>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="col-span-2 lg:flex hidden"></div>
           </div>
-
-
           {/* Upload Resume Section */}
           <div className=" rounded-lg p-6 mt-6">
             <h2 className="text-base font-medium text-gray-800 font-dmsans">
@@ -86,7 +105,7 @@ const UploadResumePage = () => {
 
             <div className="border-dashed border-2 border-gray-400 rounded-md mt-4 py-5 px-10 text-center">
               <div className="flex justify-center">
-              <img src="/gallery.png" alt="" className="p-4" />
+                <img src="/gallery.png" alt="" className="p-4" />
               </div>
               <p className="text-gray-500 text-sm font-dmsans">
                 Drop your resume here, or{" "}
@@ -107,20 +126,39 @@ const UploadResumePage = () => {
               </h3>
               <div className="space-y-4 mt-4">
                 {[
-                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 22, 2023", select:true, fileSize:'162 kb' },
-                  { name: "Tina Nguyen’s Resume", uploaded: "Jul 22, 2023", select:false, fileSize:'162 kb' },
-                  { name: "Tina Nguyen’s Resume", uploaded: "Apr 6, 2023", select:false, fileSize:'162 kb' },
+                  {
+                    name: "Tina Nguyen’s Resume",
+                    uploaded: "Apr 22, 2023",
+                    select: true,
+                    fileSize: "162 kb",
+                  },
+                  {
+                    name: "Tina Nguyen’s Resume",
+                    uploaded: "Jul 22, 2023",
+                    select: false,
+                    fileSize: "162 kb",
+                  },
+                  {
+                    name: "Tina Nguyen’s Resume",
+                    uploaded: "Apr 6, 2023",
+                    select: false,
+                    fileSize: "162 kb",
+                  },
                 ].map((resume, idx) => (
                   <div className="flex">
                     <input
                       type="radio"
                       name="resume"
                       id={`resume-${idx}`}
-                      className={`mr-4 ${resume.select?"border-red-500":"border-gray-300"}`}
+                      className={`mr-4 ${
+                        resume.select ? "border-red-500" : "border-gray-300"
+                      }`}
                     />
                     <div
                       key={idx}
-                      className={`sm:flex items-center justify-between border  rounded-md p-4 w-full ${resume.select?"border-red-500":"border-gray-300"}`}
+                      className={`sm:flex items-center justify-between border  rounded-md p-4 w-full ${
+                        resume.select ? "border-red-500" : "border-gray-300"
+                      }`}
                     >
                       <div className="flex">
                         <img src="/images/PDF.png" className="h-12 w-12" />
@@ -137,19 +175,40 @@ const UploadResumePage = () => {
                         </div>
                       </div>
 
-
-
                       <div>
-                      <button className="w-5 flex justify-center m-1">
-                      <img
+                        <button
+                          className="w-5 flex justify-center m-1"
+                          onClick={()=>handleRemove(idx)}
+                        >
+                          <img
                             src="/dots.png"
                             alt="Step Icon"
                             className="rounded-full"
                           />
-                      </button>
-                      <p  className="text-gray-500 text-[10px] font-dmsans font-normal">
-                        {resume.fileSize}
-                      </p>
+                        </button>
+                        <p className="text-gray-500 text-[10px] font-dmsans font-normal">
+                          {resume.fileSize}
+                        </p>
+                        {isModalOpen === idx && (
+                          <div className=" flex items-center justify-center absolute right-12">
+                            <div className="bg-white p-2 rounded shadow-lg">
+                              <button
+                                className="px-4 py-2 rounded text-gray-600 flex items-center"
+                                onClick={() => {
+                                  // Handle removal logic here
+                                  closeModal();
+                                }}
+                              >
+                                <img
+                                  src="/trash.png"
+                                  alt="Step Icon"
+                                  className="rounded-full mr-1"
+                                />
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -164,8 +223,8 @@ const UploadResumePage = () => {
             </button>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 
