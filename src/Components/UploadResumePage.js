@@ -8,12 +8,17 @@ const UploadResumePage = () => {
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(null);
+  const [selectedResumeIndex, setSelectedResumeIndex] = useState(0); // Default selected index is 0
   const handleRemove = (idx) => {
     setIsModalOpen(idx);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleRadioChange = (index) => {
+    setSelectedResumeIndex(index);
   };
 
   return (
@@ -150,6 +155,8 @@ const UploadResumePage = () => {
                       type="radio"
                       name="resume"
                       id={`resume-${idx}`}
+                      checked={selectedResumeIndex === idx} // Set checked based on selected index
+                      onChange={() => handleRadioChange(idx)} // Handle change event
                       className={`mr-4 ${
                         resume.select ? "border-red-500" : "border-gray-300"
                       }`}
@@ -178,7 +185,7 @@ const UploadResumePage = () => {
                       <div>
                         <button
                           className="w-5 flex justify-center m-1"
-                          onClick={()=>handleRemove(idx)}
+                          onClick={() => handleRemove(idx)}
                         >
                           <img
                             src="/dots.png"
